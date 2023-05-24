@@ -10,7 +10,7 @@ convolutionels (CNN), grace à la librairie PyTorch. L'entrainement des réseaux
 ## Installation
 Ce projet utilise nécéssite un GPU (une carte graphique dédiée) pour fonctionner correctement. L'entrainement pourrait planter sur certains réseaux si vous n'avez pas assez de RAM sur la carte graphique de votre machine.
 
-Pour installer l'application, commencez par copier le dépot du livre ([AI-book sur github][ia-gh]),
+Pour installer l'application, commencez par copier le dépot suvant ([Cat_Dog_Breed sur github][ia-gh]),
 soit en recupérant l'archive zip depuis github, soit à l'aide de l'outil git:
 ```
 git clone https://github.com/mustivore/Cat_Dog_Breed.git
@@ -38,7 +38,7 @@ créé, en utilisant la commande:
 poetry run python main.py
 ```
 
-Vous pourrez trouver des screens de l'application dans notre rapport expliquan plus en détail le fonctionnenement de l'application.
+Vous pourrez trouver des screens de l'application dans notre rapport expliquant plus en détail le fonctionnenement de l'application.
 
 
 Une fois lancé, l'application lancera une itération d'entrainement de réseau de neurone pour la classification des races de chiens. Ne vous inquiétez pas si ceci prend un certain temps. Vous pouvez aussi charger un réseau de neurone pré-entrainé pour la classification de chat/chien en cliquant sur "Select model".
