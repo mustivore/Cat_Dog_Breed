@@ -139,10 +139,16 @@ if __name__ == "__main__":
         net = models.alexnet(pretrained=True)
         net.classifier[6] = nn.Linear(in_features=net.classifier[6].in_features, out_features=len(label_dict.keys()))
         lr = 1e-4
-    else:
+    elif model_name == "resnet-pretrained":
         net = ResNet(pretrained=True, num_classes=2).get_model()
         lr = 1e-3
+    else:
+        print("Please select a valid model")
+        net = None
 
-    net = net.cuda()
-    avg_train_losses, avg_valid_losses = train(net, learning_rate=lr, num_epochs=args.epochs, path=args.path)
-    plot(model_name, avg_train_losses, avg_valid_losses)
+    if net is not None:
+        net = net.cuda()
+        avg_train_losses, avg_valid_losses = train(net, learning_rate=lr, num_epochs=args.epochs, path=args.path)
+        plot(model_name, avg_train_losses, avg_valid_losses)
+    else:
+        exit(-1)

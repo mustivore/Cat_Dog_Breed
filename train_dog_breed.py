@@ -1,3 +1,5 @@
+import argparse
+
 import numpy as np
 import torch
 import torchvision.models as models
@@ -43,6 +45,16 @@ def train(net, label_dict, learning_rate=1e-4, num_epochs=100):
 
 
 if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="CNN Trainer for the dog breed app.")
+
+    parser.add_argument(
+        "-p",
+        "--path",
+        type=str,
+        help="Destination folder to save the model after training ends.",
+        default="Custom",
+    )
+    args = parser.parse_args()
     label_dict = dict(
         n02086240='Shih-Tzu',
         n02087394='Rhodesian ridgeback',
@@ -59,5 +71,5 @@ if __name__ == "__main__":
     in_features = model.fc.in_features
     model.fc = nn.Linear(in_features=in_features, out_features=len(label_dict.keys()))
     model = model.cuda()
-    train(model, label_dict, num_epochs=3)
-    torch.save(model.state_dict(), "models/resnet_pretrained_dog_breed.pt")
+    train(model, label_dict, num_epochs=5)
+    torch.save(model.state_dict(), args.path)
